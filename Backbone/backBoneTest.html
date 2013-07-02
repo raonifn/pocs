@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello World</title>
+
+		<script src="./lib/jquery-1.10.1.min.js"></script>
+		<script src="./lib/underscore-min.js"></script>
+		<script src="./lib/backbone-min.js"></script>
+
+        <script src="PostView.js"></script>
+
+        <script>
+        $(document).ready(function(){
+                var postView = new PostView();
+                postView.render();
+                console.log(postView.el);
+                $('body').append(postView.el);
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
