@@ -9,6 +9,7 @@
 		<script src="./lib/backbone-min.js"></script>
 
         <script src="PostView.js"></script>
+        <script src="PostModel.js"></script>
 
         <script>
         $(document).ready(function(){
@@ -16,6 +17,22 @@
                 postView.render();
                 console.log(postView.el);
                 $('body').append(postView.el);
+
+
+
+                var post = new PostModel(); 
+                //var post2 = new PostModel({idAttribute: '201201'}); 
+
+                console.log(post.get('title'));
+
+                console.log('Id: ' + post.id); 
+                console.log('idAttribute: ' + post.get('idAttribute')); 
+                console.log('CID: ' + post.cid);
+
+
+                post = JSON.stringify(post);
+                console.log(post);
+
             });
         </script>
     </head>
