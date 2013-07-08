@@ -1,22 +1,25 @@
-(function(){
+define(["jquery", "backbone", "LoginModel", "LoginView"], function ($, Backbone, LoginModel, LoginView) {
 
-	window.App = {Router:{}, loginView:{}, loginModel:{}};
+	(function(){
 
-	App.Router = Backbone.Router.extend({
-		routes:{
-			'':'login',
-			'cadastro':'cadstro'
-		},
-		login: function(){
-			App.loginModel = new LoginModel();
-			App.loginView = new LoginView({model : App.loginModel});
-			App.loginView.render();
-		},
-		cadstro: function(){
-			App.loginView.cadastro();
-		}
-	});
+		window.App = {Router:{}, loginView:{}, loginModel:{}};
 
-	new App.Router;
-	Backbone.history.start();
-})();
+		App.Router = Backbone.Router.extend({
+			routes:{
+				'':'login',
+				'cadastro':'cadstro'
+			},
+			login: function(){
+				App.loginModel = new LoginModel();
+				App.loginView = new LoginView({model : App.loginModel});
+				App.loginView.render();
+			},
+			cadstro: function(){
+				App.loginView.cadastro();
+			}
+		});
+
+		new App.Router;
+		Backbone.history.start();
+	})();
+});

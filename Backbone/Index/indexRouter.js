@@ -11,12 +11,8 @@
 			alert("Olá");
 			App.indexView = new IndexView();
 			App.indexView.render();
-		},
-		outro: function(){
-			alert("deixe sua imaginação voar")
 		}
 	});
-
 	new App.Router;
 	Backbone.history.start();
 })();
