@@ -2,7 +2,6 @@ function setCookie(cookieName,value,exdays){
 	var exdate=new Date();
 	exdate.setDate(exdate.getDate() + exdays);
 	var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-	alert(cookieValue)
 	document.cookie=cookieName + "=" + cookieValue;
 }
 
