@@ -6,8 +6,10 @@ var LoginView = Backbone.View.extend({
     },
     render: function() {
         this.$el.append("<span>login</span><input type='text'><br><span>senha</span><input type='text'><br><a href='#cadastro'>cadastre-se</a><div id='cadastro'></div>");
+        this.cadastroDiv = this.$el.find('#cadastro');
     },
-    cadastro: function(){''
-    	$("#cadastro").append("<h1> cadastro <input type='button' onclick='"+this.model.teste()+"''></h1>");	
+    cadastro: function(){
+        cadastroView = new CadastroView();
+        this.cadastroDiv.append(cadastroView.render().el);
     }
 });
