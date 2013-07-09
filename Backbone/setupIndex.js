@@ -2,13 +2,10 @@ requirejs.config({
     "paths": {
         "lib": "lib",
         "jquery": ["lib/jquery-1.10.1.min"],
-		"backbone": ["lib/backbone-min"],
+		    "backbone": ["lib/backbone-min"],
         "require": ["lib/require.min"],
         "underscore": ["lib/underscore-min"],
-        "LoginModel": ["Login/LoginModel"],
-        "LoginView": ["Login/LoginView"],
-        "CadastroModel": ["Cadastro/CadastroModel"],
-        "CadastroView": ["Cadastro/CadastroView"]
+        "IndexView": ["Index/indexView"]
     },
     "shim": {
         "jquery": {
@@ -28,4 +25,4 @@ requirejs.config({
 });
 
 // Load the main app module to start the app
-requirejs(["Login/loginRouter"]);
+requirejs(["Index/indexRouter"]);

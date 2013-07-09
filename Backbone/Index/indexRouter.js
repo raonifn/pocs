@@ -1,5 +1,5 @@
+define(["jquery", "backbone", "IndexView"], function ($, Backbone, IndexView) {
 (function(){
-
 	window.App = {Router:{}, indexView:{}};
 
 	App.Router = Backbone.Router.extend({
@@ -8,7 +8,6 @@
 			'outro':'outro'
 		},
 		index: function(){
-			alert("Olá");
 			App.indexView = new IndexView();
 			App.indexView.render();
 		}
@@ -16,3 +15,5 @@
 	new App.Router;
 	Backbone.history.start();
 })();
+
+});
