@@ -9,7 +9,8 @@ requirejs.config({
         "LoginView": ["Login/loginView"],
         "CadastroModel": ["Cadastro/cadastroModel"],
         "CadastroView": ["Cadastro/cadastroView"],
-        "IndexView": ["Index/indexView"]
+        "IndexView": ["Index/indexView"],
+        "text": ["lib/text"]
     },
     "shim": {
         "jquery": {
@@ -18,7 +19,7 @@ requirejs.config({
         "require": {
             exports: 'require'
         },
-		'backbone': {
+		    'backbone': {
             deps: ['underscore', 'jquery'],
             exports: 'Backbone'
         },

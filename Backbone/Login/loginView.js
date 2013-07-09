@@ -1,6 +1,8 @@
-define(["jquery", "backbone", "CadastroModel", "CadastroView"], function ($, Backbone, CadastroModel, CadastroView) {
+define(["jquery", "backbone", "CadastroModel", "CadastroView", "text!Login/templates/tLogin.html"],     
+function ($, Backbone, CadastroModel, CadastroView, templateLogin) {
     var LoginView = Backbone.View.extend({
-    	el: $('#corpo'),
+    	el: $('#corpo'), 
+        templateLogin: _.template(templateLogin),
         events: {
             'click button#btnLogin' : 'login'
         },
@@ -8,7 +10,7 @@ define(["jquery", "backbone", "CadastroModel", "CadastroView"], function ($, Bac
         	this.$el.empty();
         },
         render: function() {
-            this.$el.append("<span>login</span><input type='text' id='user'><br><span>senha</span><input type='text' id='pass'><br><button id='btnLogin'>Login</button><a href='#cadastro'>cadastre-se</a><div id='cadastro'></div>");
+            this.$el.append(templateLogin);
             this.cadastroDiv = this.$el.find('#cadastro');
         },
         cadastro: function(){

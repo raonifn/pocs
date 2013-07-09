@@ -1,14 +1,16 @@
-define(["backbone", "CadastroModel"], function (Backbone, CadastroModel) {
+define(["jquery","backbone", "CadastroModel", "text!Cadastro/template/tCadastro.html"], function ($,Backbone, CadastroModel, templateCadastro) {
 	var CadastroView = Backbone.View.extend({
 		el: '',
 		tagName: 'div',
+		templateCadastro : _.template(templateCadastro),
 		id: 'cadstro',
 		model : '',
 		events: {
 	        "click  #btnCadastro": "insert"
 	    },
 		render: function(){
-			this.$el.append("<h1>Cadastro</h1><br><label>usuario</label><input type='text' id='user'><br><span>senha</span><input type='text' id='pass'><br><button id='btnCadastro'>Inserir</button>");
+			var obj = $.parseJSON('{"titulo":"Cadastrar-se-á"}'); // valor que viria do model
+			this.$el.append(this.templateCadastro(obj));
 			return this;
 		},
 		insert: function(){
