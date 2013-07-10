@@ -1,12 +1,12 @@
 requirejs.config({
     "paths": {
-        "lib": "lib",
-        "jquery": ["lib/jquery-1.10.1.min"],
-		"backbone": ["lib/backbone-min"],
-        "require": ["lib/require.min"],
-        "underscore": ["lib/underscore-min"],
-        "IndexView": ["Index/indexView"],
-        "text": ["lib/text"]
+        "lib": "../lib",
+        "jquery": ["../lib/jquery-1.10.1.min"],
+		"backbone": ["../lib/backbone-min"],
+        "require": ["../lib/require.min"],
+        "underscore": ["../lib/underscore-min"],
+        "IndexView": ["../Index/indexView"],
+        "text": ["../lib/text"]
     },
     "shim": {
         "jquery": {
@@ -26,4 +26,4 @@ requirejs.config({
 });
 
 // Load the main app module to start the app
-requirejs(["Index/indexRouter"]);
+requirejs(["indexRouter"]);

@@ -1,4 +1,4 @@
-define(["jquery", "backbone", "CadastroModel", "CadastroView", "text!Login/templates/tLogin.html"],     
+define(["jquery", "backbone", "CadastroModel", "CadastroView", "text!templates/tLogin.html"],     
 function ($, Backbone, CadastroModel, CadastroView, templateLogin) {
     var LoginView = Backbone.View.extend({
     	el: $('#corpo'), 

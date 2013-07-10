@@ -1,4 +1,4 @@
-define(["jquery","backbone", "CadastroModel", "text!Cadastro/template/tCadastro.html"], function ($,Backbone, CadastroModel, templateCadastro) {
+define(["jquery","backbone", "CadastroModel", "text!../Cadastro/templates/tCadastro.html"], function ($,Backbone, CadastroModel, templateCadastro) {
 	var CadastroView = Backbone.View.extend({
 		el: '',
 		tagName: 'div',

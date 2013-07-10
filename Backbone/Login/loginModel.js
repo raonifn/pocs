@@ -4,7 +4,7 @@ define(["backbone"], function (Backbone) {
 		autenticar: function(user, pass) {
 			if(getCookie("user") == user && getCookie("pass") == pass){
 				alert("autenticou");
-				 location.href="index.html";
+				 location.href="../Index/index.html";
 			}else{
 				alert("nao autenticou");
 			}
