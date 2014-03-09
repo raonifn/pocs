@@ -1,5 +1,6 @@
 	var http = require('http'),
 		fs = require('fs');
+	var mysql = require('mysql');
 
 	var count = 0;
 	var countRefresh = 0;
@@ -22,7 +23,7 @@
 	deck = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10, 11,	12,	13,
 				1,	2,	3,	4,	5,	6,	7,	8,	9,	10, 11,	12,	13,
 				1,	2,	3,	4,	5,	6,	7,	8,	9,	10, 11,	12,	13,
-				1,	2,	3,	4,	5,	6,	7,	8,	9,	10, 11,	12,	13,];
+				1,	2,	3,	4,	5,	6,	7,	8,	9,	10, 11,	12,	13];
 
 
 	shuffleArray(deck);
