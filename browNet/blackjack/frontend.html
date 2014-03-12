@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WebSockets - Simple chat</title>
+ 
+        <style>
+        * { font-family:tahoma; font-size:12px; padding:0px; margin:0px; }
+        p { line-height:18px; }
+        div { width:500px; margin-left:auto; margin-right:auto;}
+        #content { padding:5px; background:#ddd; border-radius:5px; overflow-y: scroll;
+                   border:1px solid #CCC; margin-top:10px; height: 160px; }
+        #input { border-radius:2px; border:1px solid #ccc;
+                 margin-top:10px; padding:5px; width:400px;  }
+        #status { width:88px; display:block; float:left; margin-top:15px; }
+        </style>
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <script type="text/javascript">
+
+        var deck = [1,2,3,4,5,6,7,8,9,10,11,12,13,
+                        1,2,3,4,5,6,7,8,9,10,11,12,13,
+                        1,2,3,4,5,6,7,8,9,10,11,12,13,
+                        1,2,3,4,5,6,7,8,9,10,11,12,13];
+
+        deck.sort(function(){return Math.random() - 0.5});
+        var connection = new WebSocket('ws://127.0.0.1:1337');
+
+            $(function () {
+             
+                var content = $('#content');
+                var input = $('#input');
+                var status = $('#status');
+             
+                
+                var myName = false;
+             
+                window.WebSocket = window.WebSocket || window.MozWebSocket;
+             
+                if (!window.WebSocket) {
+                    content.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
+                                                + 'support WebSockets.'} ));
+                    input.hide();
+                    $('span').hide();
+                    return;
+                }
+             
+                
+             
+                connection.onopen = function () {
+                    input.removeAttr('disabled');
+                    status.text('Choose name:');
+                };
+             
+                connection.onmessage = function (json) {
+                    var message = JSON.parse(json.data);
+             
+                    if (message.type === 'name') {
+
+                        status.text(myName + ': ');
+                        input.removeAttr('disabled').focus();
+                        
+                    } else if (message.type === 'message') {
+
+                        input.removeAttr('disabled');
+                        addMessage(message.data.author, message.data.text, new Date(message.data.time));
+                        console.info(message);
+
+                    } else if (message.type === 'newCard') {
+                        alert("new card");
+                         var message = {
+                            type: 'cardDrawn' ,
+                            data : deck.pop()
+                        }
+
+                        connection.send(JSON.stringify(message))
+                    }
+                };
+             
+                input.keydown(function(e) {
+                    if (e.keyCode === 13) {
+                        
+                        var msg  = $(this).val();
+                        $(this).val('');
+
+                        if (!msg) {
+                            return;
+                        }
+
+                        var message = {
+                            type: 'message' ,
+                            data : msg
+                        }
+
+                        connection.send(JSON.stringify(message))
+
+                        
+                        input.attr('disabled', 'disabled');
+                        if (myName === false) {
+                            myName = msg;
+                        }
+                    }
+                });
+             
+                function addMessage(author, message, dt) {
+                    content.prepend('<p>' + author + '</span> @ ' +
+                         + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
+                         + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
+                         + ': ' + message + '</p>');
+                }
+
+            });
+
+            function newCard(){
+                var message = {type: 'newCard'};
+
+                connection.send(JSON.stringify(message))
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+        <div>
+            <span id="status">Connecting...</span>
+            <input type="text" id="input" disabled="disabled" />
+            <input type="button" onclick="newCard()" value="New Card">
+        </div>
+    </body>
+</html>

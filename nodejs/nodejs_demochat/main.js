@@ -1,6 +1,5 @@
 	var http = require('http'),
 		fs = require('fs');
-	var mysql = require('mysql');
 
 	var count = 0;
 	var countRefresh = 0;
